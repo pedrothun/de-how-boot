@@ -24,13 +24,10 @@ type(df)
 df[0]
 type(df[0])
 df=df[0].copy()
+new_columns = df.columns
 df = df[df['Bola1'] == df['Bola1']]
 df['Concurso'] = pd.to_numeric(df['Concurso'])
 df.sort_values('Concurso',ascending=True)
-
-new_columns = df.columns
-df[df["Bola1"] == df['Bola1']]
-
 
 
 nr_pop = list(range(1, 26))
