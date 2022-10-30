@@ -5,11 +5,11 @@ import sys
 
 
 
-url = 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados?modalidade=lotofacil'
+url = 'https://servicebus2.caixa.gov.br/portaldeloterias/api/resultados?modalidade=Lotofacil'
+#url = sys.argv[1]
 
 
-
-r = requests.get(url, verify=False)
+r = requests.get(url,verify=False)
 
 r.text
 r_text = r.text.replace("\\r\\n","")
@@ -24,10 +24,14 @@ type(df)
 df[0]
 type(df[0])
 df=df[0].copy()
-df
-df.columns
+df = df[df['Bola1'] == df['Bola1']]
+df['Concurso'] = pd.to_numeric(df['Concurso'])
+df.sort_values('Concurso',ascending=True)
+
 new_columns = df.columns
 df[df["Bola1"] == df['Bola1']]
+
+
 
 nr_pop = list(range(1, 26))
 nr_pares = list(range(2,26,2))  #[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
